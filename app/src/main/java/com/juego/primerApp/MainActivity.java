@@ -27,18 +27,41 @@ public class MainActivity extends AppCompatActivity {
 
     //Este metodo realiza la suma.
 
-    public void sumar(View view){
-        String valor1 = et1.getText().toString();
-        String valor2 = et2.getText().toString();
+    private void calcular(View view, Operacion operacion){
 
-        int num1 = Integer.parseInt(valor1);
-        int num2 = Integer.parseInt(valor2);
+        double num1 = Integer.parseInt(et1.getText().toString());
+        double num2 = Integer.parseInt(et2.getText().toString());
+        double resultado = 0;
+        switch (operacion){
+            case SUMA:
+                resultado = num1 + num2;
+                break;
+            case RESTA:
+                resultado = num1 - num2;
+                break;
+            case DIVISION:
+                resultado = num1 / num2;
+                break;
+            case MULTIPLICACION:
+                resultado = num1 * num2;
+                break;
+        }
 
-        int suma = num1 + num2;
-
-        String result = String.valueOf(suma);
-        tv1.setText(result);
+        tv1.setText(String.valueOf(resultado));
 
     }
 
+
+    public void suma(View view){
+        calcular(view,Operacion.SUMA);
+    }
+    public void resta(View view){
+        calcular(view,Operacion.RESTA);
+    }
+    public void multiplicacion(View view){
+        calcular(view,Operacion.MULTIPLICACION);
+    }
+    public void division(View view){
+        calcular(view,Operacion.DIVISION);
+    }
 }
